@@ -9,23 +9,41 @@ import SwiftUI
 
 
 struct ContentView: View {
+    var txts = ["hit","me","with a","bus"]
     var body: some View {
-        return ZStack(alignment:.top, content:{
-            RoundedRectangle(cornerRadius: 160).foregroundColor(/*@START_MENU_TOKEN@*/.purple/*@END_MENU_TOKEN@*/).blur(radius:10)
-            Circle().foregroundColor(.red).blur(radius: 50)
-            Text("Hello, world!").foregroundColor(Color.green).padding(.all).controlSize(/*@START_MENU_TOKEN@*/.large/*@END_MENU_TOKEN@*/)
+        HStack{
+            
+            cardView(faceup:false,txt:txts[0])
+            cardView(faceup:false,txt:txts[1])
+            cardView(faceup:false,txt: txts[2])
+            cardView(txt :txts[3])
 
-        }).padding()
-
-
-
+        }.padding(.horizontal)
     }
-
 }
 
 
 
-
+struct cardView: View {
+    @State var faceup : Bool = true
+    var txt: String
+    var body: some View {
+        ZStack {
+            let shape = RoundedRectangle(cornerRadius: 20)
+            shape.fill().foregroundColor(.red)
+            shape.stroke(lineWidth: 3)
+            if faceup {
+                shape.foregroundColor(.white)
+                Text(txt).font(.largeTitle)
+                
+            }
+            
+        }
+        .onTapGesture {
+            faceup = !faceup
+        }
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
