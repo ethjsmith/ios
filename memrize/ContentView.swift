@@ -35,14 +35,16 @@ struct cardView: View {
     //var txt: String
     var body: some View {
         ZStack {
+            let shape = RoundedRectangle(cornerRadius: 20)
             if card.isFaceUp {
-                let shape = RoundedRectangle(cornerRadius: 20)
                 shape.fill().foregroundColor(.white)
                 shape.stroke(lineWidth: 3)
                 Text(card.contents).padding()
             }
+            else if card.isMatched {
+                shape.opacity(0)
+            }
             else {
-                let shape = RoundedRectangle(cornerRadius: 20)
                 shape.fill().foregroundColor(.red)
                 shape.stroke(lineWidth: 3)
             }
