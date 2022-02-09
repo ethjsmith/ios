@@ -1,19 +1,18 @@
 //
-//  memrizeApp.swift
-//  memrize
-//
-//  Created by Ethan Smith on 1/12/22.
-//
+//  MemorizeApp.swift
+//  Memorize
+//  Ethan Smith 
 
 import SwiftUI
 
 @main
-struct memrizeApp: App {
-    let game = EmojiMemoryGame()
+struct MemorizeApp: App {
+    private let game = EmojiMemoryGame()
+    private let theme = EmojiMemoryGame.selectedTheme
     
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: game)
+            EmojiMemoryGameView(game: game,theme:theme!)
         }
     }
 }
